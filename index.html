@@ -1,8 +1,9 @@
 <html>
-  <head>
+
+<head>
     <title>Angular 2 QuickStart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
     <!-- 1. Load libraries -->
@@ -13,26 +14,42 @@
 
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="https://npmcdn.com/typescript@1.8.2/lib/typescript.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
-      System.config({
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
-    </script>
-  </head>
+        /*System.config({
+                packages: {
+                  app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                  }
+                }
+              });*/
 
-  <!-- 3. Display the application -->
-  <body>
+        System.config({
+            transpiler: 'typescript',
+            typescriptOptions: {
+                emitDecoratorMetadata: true
+            },
+            packages: {
+                'app': {
+                    defaultExtension: 'ts'
+                }
+            }
+        });
+        System.import('app/main')
+            .then(null, console.error.bind(console));
+
+    </script>
+</head>
+
+<!-- 3. Display the application -->
+
+<body>
     <my-app>Loading...</my-app>
-  </body>
+</body>
+
 </html>
